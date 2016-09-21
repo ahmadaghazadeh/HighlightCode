@@ -43,15 +43,10 @@ namespace HighlightCode.App_Start
             doc.LoadHtml(result.Html);
             
             var pTags = doc.DocumentNode.Descendants("pre");
-            
             var html = pTags.SingleOrDefault().OuterHtml;
-            foreach (var tag in classHtml)
-            {
-                html=html.Replace(string.Format("class=\"{0}\"",tag)  ,string.Empty);
-            }
-            
+            html = classHtml.Aggregate(html, (current, tag) => current.Replace("class=" + tag, ""));
 
-            return pTags.SingleOrDefault().OuterHtml;
+            return html;
 
         }
         static void WirteHighlightFile()

@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Web;
-using System.Windows.Forms;
-using HtmlAgilityPack;
+using PreMailer.Net;
+using System.Web.Mvc;
+using PreMailer = PreMailer.Net.PreMailer;
 
 namespace HighlightCode.App_Start
 {
@@ -14,23 +16,6 @@ namespace HighlightCode.App_Start
         private static readonly string Path = HttpContext.Current.Server.MapPath("~");
         private static readonly string PathHighlight = Path + highlightPath;
         private static readonly string Drive = System.IO.Path.GetPathRoot(Path);
-        private static readonly string[] classHtml={
-            "hl num",
-"hl esc",
-"hl str",
-"hl pps",
-"hl slc",
-"hl com",
-"hl ppc",
-"hl opt",
-"hl ipl",
-"hl lin",
-"hl kwa",
-"hl kwb",
-"hl kwc",
-"hl kwd"};
-
-
         public static string ToHighLightFormat(this string str, string lng)
         {
             WirteCodeToFile(str, lng);
@@ -39,19 +24,9 @@ namespace HighlightCode.App_Start
 
             var result = global::PreMailer.Net.PreMailer.MoveCssInline(htmlSource);
 
-            var doc = new HtmlAgilityPack.HtmlDocument();
-            doc.LoadHtml(result.Html);
-            
-            var pTags = doc.DocumentNode.Descendants("pre");
-            
-            var html = pTags.SingleOrDefault().OuterHtml;
-            foreach (var tag in classHtml)
-            {
-                html=html.Replace(string.Format("class=\"{0}\"",tag)  ,string.Empty);
-            }
-            
-
-            return pTags.SingleOrDefault().OuterHtml;
+            //result.Html;        // Resultant HTML, with CSS in-lined.
+            //result.Warnings;     // string[] of any warnings that occurred during processing.
+            return File.ReadAllText(PathHighlight + "main.html");
 
         }
         static void WirteHighlightFile()

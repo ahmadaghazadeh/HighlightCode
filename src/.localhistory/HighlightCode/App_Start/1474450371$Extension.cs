@@ -14,23 +14,6 @@ namespace HighlightCode.App_Start
         private static readonly string Path = HttpContext.Current.Server.MapPath("~");
         private static readonly string PathHighlight = Path + highlightPath;
         private static readonly string Drive = System.IO.Path.GetPathRoot(Path);
-        private static readonly string[] classHtml={
-            "hl num",
-"hl esc",
-"hl str",
-"hl pps",
-"hl slc",
-"hl com",
-"hl ppc",
-"hl opt",
-"hl ipl",
-"hl lin",
-"hl kwa",
-"hl kwb",
-"hl kwc",
-"hl kwd"};
-
-
         public static string ToHighLightFormat(this string str, string lng)
         {
             WirteCodeToFile(str, lng);
@@ -43,14 +26,8 @@ namespace HighlightCode.App_Start
             doc.LoadHtml(result.Html);
             
             var pTags = doc.DocumentNode.Descendants("pre");
+            doc.LoadHtml(pTags.SingleOrDefault().OuterHtml);
             
-            var html = pTags.SingleOrDefault().OuterHtml;
-            foreach (var tag in classHtml)
-            {
-                html=html.Replace(string.Format("class=\"{0}\"",tag)  ,string.Empty);
-            }
-            
-
             return pTags.SingleOrDefault().OuterHtml;
 
         }

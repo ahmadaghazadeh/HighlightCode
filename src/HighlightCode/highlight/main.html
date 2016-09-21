@@ -3,62 +3,31 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>main.java</title>
-<link rel="stylesheet" type="text/css" href="highlight.css">
+<style type="text/css">
+body.hl	{ background-color:#eeeeee; }
+pre.hl	{ color:#000000; background-color:#eeeeee; font-size:10pt; font-family:'Courier New',monospace;}
+.hl.num { color:#800080; font-weight:bold; }
+.hl.esc { color:#ff00ff; font-weight:bold; }
+.hl.str { color:#a68500; }
+.hl.pps { color:#0000ff; }
+.hl.slc { color:#f27900; }
+.hl.com { color:#ff8000; }
+.hl.ppc { color:#0080c0; font-weight:bold; }
+.hl.opt { color:#ff0080; font-weight:bold; }
+.hl.ipl { color:#9e5dff; }
+.hl.lin { color:#303030; }
+.hl.kwa { color:#bb7977; font-weight:bold; }
+.hl.kwb { color:#8080c0; font-weight:bold; }
+.hl.kwc { color:#0080c0; }
+.hl.kwd { color:#004466; }
+</style>
 </head>
 <body class="hl">
-<pre class="hl"><span class="hl kwa">public class</span> MainAct <span class="hl kwa">extends</span> AppCompatActivity <span class="hl opt">{</span>
-
-         <span class="hl kwa">static</span> List<span class="hl opt">&lt;</span>OnReceiveListener<span class="hl opt">&gt;</span> onReceiveList <span class="hl opt">=</span> <span class="hl kwa">new</span> ArrayList<span class="hl opt">&lt;</span>OnReceiveListener<span class="hl opt">&gt;();</span>
-
-        <span class="hl kwa">public</span> <span class="hl kwb">void</span> <span class="hl kwd">attachOnReceiveListener</span><span class="hl opt">(</span>OnReceiveListener listener<span class="hl opt">) {</span>
-            <span class="hl kwa">if</span> <span class="hl opt">(!</span>onReceiveList<span class="hl opt">.</span><span class="hl kwd">contains</span><span class="hl opt">(</span>listener<span class="hl opt">)) {</span>
-                onReceiveList<span class="hl opt">.</span><span class="hl kwd">add</span><span class="hl opt">(</span>listener<span class="hl opt">);</span>
-            <span class="hl opt">}</span>
-        <span class="hl opt">}</span>
-
-        <span class="hl kwa">public interface</span> OnReceiveListener <span class="hl opt">{</span>
-            <span class="hl slc">// This can be any number of events to be sent to the activity</span>
-            <span class="hl kwb">void</span> <span class="hl kwd">receivePreview</span><span class="hl opt">(</span>Object<span class="hl opt">...</span> obj<span class="hl opt">);</span>
-        <span class="hl opt">}</span>
-
-        <span class="hl kwa">public</span> <span class="hl kwd">onReceivePreview</span><span class="hl opt">(</span>Object<span class="hl opt">...</span> obj<span class="hl opt">) {</span>
-                 <span class="hl kwa">for</span> <span class="hl opt">(</span>OnReceiveListener listener <span class="hl opt">:</span> onReceiveList<span class="hl opt">) {</span>
-                    listener<span class="hl opt">.</span><span class="hl kwd">receivePreview</span><span class="hl opt">(</span>obj<span class="hl opt">);</span>
-                <span class="hl opt">}</span>
-        <span class="hl opt">}</span>
-     <span class="hl opt">}</span>
-
-    <span class="hl kwa">public class</span> OneFragment <span class="hl kwa">extends</span> Fragment <span class="hl kwa">implements</span> OnReceiveListener<span class="hl opt">{</span>
-
-
-        <span class="hl kwc">&#64;Override</span>
-        <span class="hl kwa">public</span> <span class="hl kwb">void</span> <span class="hl kwd">onCreate</span><span class="hl opt">(</span>Bundle savedInstanceState<span class="hl opt">) {</span>
-            <span class="hl kwa">super</span><span class="hl opt">.</span><span class="hl kwd">onCreate</span><span class="hl opt">(</span>savedInstanceState<span class="hl opt">);</span>
-            MainAct  mainAct <span class="hl opt">=</span> <span class="hl kwa">new</span> <span class="hl kwd">MainAct</span><span class="hl opt">();</span>
-            mainAct<span class="hl opt">.</span><span class="hl kwd">attachOnReceiveListener</span><span class="hl opt">(</span><span class="hl kwa">this</span><span class="hl opt">);</span>
-
-        <span class="hl opt">}</span>
-
-        <span class="hl kwc">&#64;Override</span>
-        <span class="hl kwa">public</span> <span class="hl kwb">void</span> <span class="hl kwd">receivePreview</span><span class="hl opt">(</span>Object<span class="hl opt">...</span> obj<span class="hl opt">) {</span>
-
-        <span class="hl opt">}</span>
-    <span class="hl opt">}</span>
-
-    <span class="hl kwa">public class</span> TwoFragment <span class="hl kwa">extends</span> Fragment <span class="hl kwa">implements</span> OnReceiveListener<span class="hl opt">{</span>
-
-        <span class="hl kwc">&#64;Override</span>
-        <span class="hl kwa">public</span> <span class="hl kwb">void</span> <span class="hl kwd">onCreate</span><span class="hl opt">(</span>Bundle savedInstanceState<span class="hl opt">) {</span>
-            <span class="hl kwa">super</span><span class="hl opt">.</span><span class="hl kwd">onCreate</span><span class="hl opt">(</span>savedInstanceState<span class="hl opt">);</span>
-            MainAct  mainAct <span class="hl opt">=</span> <span class="hl kwa">new</span> <span class="hl kwd">MainAct</span><span class="hl opt">();</span>
-            mainAct<span class="hl opt">.</span><span class="hl kwd">attachOnReceiveListener</span><span class="hl opt">(</span><span class="hl kwa">this</span><span class="hl opt">);</span>
-
-        <span class="hl opt">}</span>
-        <span class="hl kwc">&#64;Override</span>
-        <span class="hl kwa">public</span> <span class="hl kwb">void</span> <span class="hl kwd">receivePreview</span><span class="hl opt">(</span>Object<span class="hl opt">...</span> obj<span class="hl opt">) {</span>
-
-        <span class="hl opt">}</span>
-    <span class="hl opt">}</span> 
+<pre class="hl">SharedPreferences sharedPreferences <span class="hl opt">=</span> <span class="hl kwd">getSharedPreferences</span><span class="hl opt">(</span><span class="hl str">&quot;Date&quot;</span><span class="hl opt">,</span> MODE_PRIVATE<span class="hl opt">);</span>
+Map<span class="hl opt">&lt;</span>String<span class="hl opt">,</span> ?<span class="hl opt">&gt;</span> allEntries <span class="hl opt">=</span> sharedPreferences <span class="hl opt">.</span><span class="hl kwd">getAll</span><span class="hl opt">();</span>
+<span class="hl kwa">for</span> <span class="hl opt">(</span>Map<span class="hl opt">.</span>Entry<span class="hl opt">&lt;</span>String<span class="hl opt">,</span> ?<span class="hl opt">&gt;</span> entry <span class="hl opt">:</span> allEntries<span class="hl opt">.</span><span class="hl kwd">entrySet</span><span class="hl opt">()) {</span>
+    Log<span class="hl opt">.</span><span class="hl kwd">d</span><span class="hl opt">(</span><span class="hl str">&quot;map values&quot;</span><span class="hl opt">,</span> entry<span class="hl opt">.</span><span class="hl kwd">getKey</span><span class="hl opt">() +</span> <span class="hl str">&quot;: &quot;</span> <span class="hl opt">+</span> entry<span class="hl opt">.</span><span class="hl kwd">getValue</span><span class="hl opt">().</span><span class="hl kwd">toString</span><span class="hl opt">());</span>
+<span class="hl opt">}</span>  
 </pre>
 </body>
 </html>
