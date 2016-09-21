@@ -1,0 +1,1 @@
+<form method="post" name="postForm">     <ul>         <li>             <label>Name</label>             <input type="text" name="name" id="name" placeholder="Bruce Wayne">             <span class="throw_error"></span>        </li>    </ul>    <input type="submit" value="Send" /> </form>  

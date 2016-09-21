@@ -1,0 +1,1 @@
+highlight -i main.java -o main.html --style custom

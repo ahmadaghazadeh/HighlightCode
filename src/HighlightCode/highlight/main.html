@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>main.java</title>
+<link rel="stylesheet" type="text/css" href="highlight.css">
+</head>
+<body class="hl">
+<pre class="hl"><span class="hl kwa">public class</span> MainAct <span class="hl kwa">extends</span> AppCompatActivity <span class="hl opt">{</span>
+
+         <span class="hl kwa">static</span> List<span class="hl opt">&lt;</span>OnReceiveListener<span class="hl opt">&gt;</span> onReceiveList <span class="hl opt">=</span> <span class="hl kwa">new</span> ArrayList<span class="hl opt">&lt;</span>OnReceiveListener<span class="hl opt">&gt;();</span>
+
+        <span class="hl kwa">public</span> <span class="hl kwb">void</span> <span class="hl kwd">attachOnReceiveListener</span><span class="hl opt">(</span>OnReceiveListener listener<span class="hl opt">) {</span>
+            <span class="hl kwa">if</span> <span class="hl opt">(!</span>onReceiveList<span class="hl opt">.</span><span class="hl kwd">contains</span><span class="hl opt">(</span>listener<span class="hl opt">)) {</span>
+                onReceiveList<span class="hl opt">.</span><span class="hl kwd">add</span><span class="hl opt">(</span>listener<span class="hl opt">);</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl kwa">public interface</span> OnReceiveListener <span class="hl opt">{</span>
+            <span class="hl slc">// This can be any number of events to be sent to the activity</span>
+            <span class="hl kwb">void</span> <span class="hl kwd">receivePreview</span><span class="hl opt">(</span>Object<span class="hl opt">...</span> obj<span class="hl opt">);</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl kwa">public</span> <span class="hl kwd">onReceivePreview</span><span class="hl opt">(</span>Object<span class="hl opt">...</span> obj<span class="hl opt">) {</span>
+                 <span class="hl kwa">for</span> <span class="hl opt">(</span>OnReceiveListener listener <span class="hl opt">:</span> onReceiveList<span class="hl opt">) {</span>
+                    listener<span class="hl opt">.</span><span class="hl kwd">receivePreview</span><span class="hl opt">(</span>obj<span class="hl opt">);</span>
+                <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+     <span class="hl opt">}</span>
+
+    <span class="hl kwa">public class</span> OneFragment <span class="hl kwa">extends</span> Fragment <span class="hl kwa">implements</span> OnReceiveListener<span class="hl opt">{</span>
+
+
+        <span class="hl kwc">&#64;Override</span>
+        <span class="hl kwa">public</span> <span class="hl kwb">void</span> <span class="hl kwd">onCreate</span><span class="hl opt">(</span>Bundle savedInstanceState<span class="hl opt">) {</span>
+            <span class="hl kwa">super</span><span class="hl opt">.</span><span class="hl kwd">onCreate</span><span class="hl opt">(</span>savedInstanceState<span class="hl opt">);</span>
+            MainAct  mainAct <span class="hl opt">=</span> <span class="hl kwa">new</span> <span class="hl kwd">MainAct</span><span class="hl opt">();</span>
+            mainAct<span class="hl opt">.</span><span class="hl kwd">attachOnReceiveListener</span><span class="hl opt">(</span><span class="hl kwa">this</span><span class="hl opt">);</span>
+
+        <span class="hl opt">}</span>
+
+        <span class="hl kwc">&#64;Override</span>
+        <span class="hl kwa">public</span> <span class="hl kwb">void</span> <span class="hl kwd">receivePreview</span><span class="hl opt">(</span>Object<span class="hl opt">...</span> obj<span class="hl opt">) {</span>
+
+        <span class="hl opt">}</span>
+    <span class="hl opt">}</span>
+
+    <span class="hl kwa">public class</span> TwoFragment <span class="hl kwa">extends</span> Fragment <span class="hl kwa">implements</span> OnReceiveListener<span class="hl opt">{</span>
+
+        <span class="hl kwc">&#64;Override</span>
+        <span class="hl kwa">public</span> <span class="hl kwb">void</span> <span class="hl kwd">onCreate</span><span class="hl opt">(</span>Bundle savedInstanceState<span class="hl opt">) {</span>
+            <span class="hl kwa">super</span><span class="hl opt">.</span><span class="hl kwd">onCreate</span><span class="hl opt">(</span>savedInstanceState<span class="hl opt">);</span>
+            MainAct  mainAct <span class="hl opt">=</span> <span class="hl kwa">new</span> <span class="hl kwd">MainAct</span><span class="hl opt">();</span>
+            mainAct<span class="hl opt">.</span><span class="hl kwd">attachOnReceiveListener</span><span class="hl opt">(</span><span class="hl kwa">this</span><span class="hl opt">);</span>
+
+        <span class="hl opt">}</span>
+        <span class="hl kwc">&#64;Override</span>
+        <span class="hl kwa">public</span> <span class="hl kwb">void</span> <span class="hl kwd">receivePreview</span><span class="hl opt">(</span>Object<span class="hl opt">...</span> obj<span class="hl opt">) {</span>
+
+        <span class="hl opt">}</span>
+    <span class="hl opt">}</span> 
+</pre>
+</body>
+</html>
+<!--HTML generated by highlight 3.31, http://www.andre-simon.de/-->

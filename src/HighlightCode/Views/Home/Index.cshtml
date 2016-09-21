@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<div class="row">
+
+    <div class="col-md-4">
+        <h2>Input your code</h2>
+        <textarea id="inputCode"></textarea>
+
+
+        <h2>HighLight code :</h2>
+
+        <label  id="outputCode"></label>
+    </div>
+</div>
+
+<script>
+    $(function() {
+        $("#inputCode")
+            .on("keyup",
+                function(ev) {
+                    $.post("../Shared/GetHighLight", { str: this.value }, function (data) {
+                        $("#outputCode").html(data);
+                    });
+                });
+    })
+</script>
