@@ -1,0 +1,23 @@
+
+Description="stak"
+
+Default        = { Colour="#000000" } //.hl
+Canvas         = { Colour="#eeeeee" }//body
+Number         = { Colour="#303336", Bold=true } 
+Escape         = { Colour="#ff00ff", Bold=true } 
+String         = { Colour="#7D2727" } 
+StringPreProc  = { Colour="#303336" } 
+BlockComment   = { Colour="#858C93" } 
+LineComment    = { Colour="#f27900" }//.slc
+PreProcessor   = { Colour="#101094", Bold=true }  
+LineNum        = { Colour="#7D2727" }  
+Operator       = { Colour="#ff0080", Bold=true }//.opt
+Interpolation  = { Colour="#303336" }  
+
+Keywords = {
+  { Colour= "#bb7977", Bold=true }//.kwa,
+  { Colour= "#101094", Bold=true }  ,
+  { Colour= "#101094" }  ,
+  { Colour= "#101094" }   ,
+}
+

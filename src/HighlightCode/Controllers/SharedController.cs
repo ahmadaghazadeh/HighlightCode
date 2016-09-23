@@ -23,7 +23,7 @@ namespace HighlightCode.Controllers
         {
               dynamic json = jsonData;
             string code = json.str;
-            return Ok(code.ToHighLightFormat("java"));
+            return Ok(code.ToHighLightFormaAndroid("java"));
         }
 
         //[HttpPost]
